@@ -6,18 +6,47 @@
 
     <groupId>com.zavirion</groupId>
     <artifactId>trafficManageSystemIot</artifactId>
-    <version>1.0-SNAPSHOT</version>
-
+    <version>1.0-SNAPSHOT</version>.
+    <packaging>ejb</packaging>
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-<dependencies>
-    <dependency>
-        <groupId>fish.payara.extras</groupId>
-        <artifactId>payara-embedded-all</artifactId>
-        <version>6.2024.2</version>
-    </dependency>
-</dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>fish.payara.extras</groupId>
+            <artifactId>payara-embedded-all</artifactId>
+            <version>6.2024.2</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.ejb</groupId>
+            <artifactId>jakarta.ejb-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-web-api</artifactId>
+            <version>9.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.jms</groupId>
+            <artifactId>jakarta.jms-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ejb-plugin</artifactId>
+                <version>3.2.1</version>
+                <configuration>
+                    <generateClient>true</generateClient>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

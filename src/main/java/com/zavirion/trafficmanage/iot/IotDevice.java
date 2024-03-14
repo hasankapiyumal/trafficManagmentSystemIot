@@ -1,6 +1,8 @@
 package com.zavirion.trafficmanage.iot;
 
-public class IotDevice {
+import java.io.Serializable;
+
+public class IotDevice implements Serializable {
     private double vehicleSpeed;
     private boolean trafficLightStatus;
     private double latitude;
