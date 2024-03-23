@@ -6,6 +6,7 @@ public class IotDevice implements Serializable {
     private double vehicleSpeed;
     private boolean trafficLightStatus;
     private double latitude;
+
     private double longitude;
 
     public IotDevice(double vehicleSpeed, boolean trafficLightStatus, double latitude, double longitude) {

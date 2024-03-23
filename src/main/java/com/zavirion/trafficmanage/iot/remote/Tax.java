@@ -1,4 +1,4 @@
-package com.zavirion.trafficmanage.iot;
+package com.zavirion.trafficmanage.iot.remote;
 
 import jakarta.ejb.Remote;
 

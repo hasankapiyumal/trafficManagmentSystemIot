@@ -18,23 +18,25 @@ public class Main {
             QueueSession session = connection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
             Queue queue = (Queue) context.lookup("myQueue");
             QueueSender sender = session.createSender(queue);
-          //  TextMessage message = session.createTextMessage();
-            ObjectMessage message = session.createObjectMessage();
+
 
             for (int i = 0; i < 100; i++) {
 
-               IotDevice iotDevice = IotDevice.simulateRandomData();
 
-               message.setObject(iotDevice);
+                IotDevice iotDevice = IotDevice.simulateRandomData();
+                MapMessage message = session.createMapMessage();
+                message.setDouble("vehicleSpeed", iotDevice.getVehicleSpeed());
+                message.setBoolean("trafficLightStatus", iotDevice.isTrafficLightStatus());
+                message.setDouble("latitude", iotDevice.getLatitude());
+                message.setDouble("longitude",iotDevice.getLongitude());
 
 
-          //      message.setText("Hasanka"+i+i);
                 sender.send(message);
 
-//                System.out.println(iotDevice.getVehicleSpeed());
-//                System.out.println(iotDevice.getLatitude());
-//                System.out.println(iotDevice.getLongitude());
-//                System.out.println(iotDevice.isTrafficLightStatus());
+                System.out.println(iotDevice.getVehicleSpeed());
+                System.out.println(iotDevice.getLatitude());
+                System.out.println(iotDevice.getLongitude());
+                System.out.println(iotDevice.isTrafficLightStatus());
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
@@ -52,4 +54,6 @@ public class Main {
 
 
     }
+
+
 }
